@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://hello-4-53n6.onrender.com' // The frontend origin
+  origin: 'https://hello-4-53n6.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use('/signup', userRoutes);
