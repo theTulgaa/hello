@@ -19,7 +19,7 @@ export const Signup = () => {
     }
     setLoading(true);
     axios
-    .post("http://localhost:8000/signup", data)
+    .post("https://hello-1-4kds.onrender.com/signup", data)
     .then(() => {
       setLoading(false);
       navigate('/');
