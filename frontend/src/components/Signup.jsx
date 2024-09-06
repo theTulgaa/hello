@@ -9,7 +9,6 @@ export const Signup = () => {
   const navigate = useNavigate();
 
   const handleCreateUser = () => {
-    e.re
     if (!username || !password) {
       console.error('Username and password are required');
       return;
