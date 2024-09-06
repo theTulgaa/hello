@@ -15,6 +15,10 @@ const URL = process.env.mongoURL;
 app.use(express.json());
 app.use(cors());
 
+app.use(cors({
+  origin: 'https://hello-4-53n6.onrender.com' // The frontend origin
+}));
+
 app.use('/signup', userRoutes);
 
 mongoose.connect(URL)
