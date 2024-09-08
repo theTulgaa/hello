@@ -31,6 +31,7 @@ app.use(cors({
 app.use('/signup', userRoutes);
 app.use('/', userLogin),
 app.use("/addpost", postRoute)
+//
 
 mongoose.connect(URL)
 .then(() => {
