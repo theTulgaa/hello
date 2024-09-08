@@ -1,5 +1,6 @@
 import User  from '../models/userModel.js';
 import express from 'express';
+import bcrypt from  'bcrypt';
 
 const router = express.Router();
 
@@ -9,13 +10,14 @@ router.post('/', async (request, response) => {
         return response.status(400).json({ message: 'Username and password are required' });
     }
     try {
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username: username.toLowerCase() });
         if (existingUser) {
             return response.status(400).json({ message: 'Username already exists' });
         }
+        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = {
         username: request.body.username,
-        password: request.body.password,
+        password: hashedPassword,
         };
 
         const user = await User.create(newUser);

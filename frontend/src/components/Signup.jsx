@@ -1,16 +1,20 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from  'react-hot-toast';
 
 export const Signup = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  //  const { enqueueSnackbar } = useSnackbar();
 
-  const handleCreateUser = () => {
+  const handleCreateUser = (e) => {
+    e.preventDefault()
     if (!username || !password) {
-      console.error('Username and password are required');
+      // console.error('Username and password are required');
+      toast.error('Username and password are required!')
       return;
     }
     const data = {
@@ -20,13 +24,16 @@ export const Signup = () => {
     setLoading(true);
     axios
     .post("https://hello-1-4kds.onrender.com/signup", data)
+    // .post("http://localhost:8000/signup", data)
     .then(() => {
       setLoading(false);
+      toast.success("You are signed up to BEYOND.")
       navigate('/');
     })
     .catch((error) => {
+        toast.error('This username is already in use!')
         setLoading(false);
-        console.log(error);
+        // console.log(error);
     });
   }
 
