@@ -26,7 +26,10 @@ app.use(cors({
   origin: 'https://hello-4-53n6.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
+// JWT_SECRET=t3nS8*1@!H9zE7^5wQ#vA$2rL6xM&0oK@3sR
 
 app.use('/signup', userRoutes);
 app.use('/', userLogin),
