@@ -41,7 +41,7 @@ export const Login = () => {
       //
     }
   };
-  if(loader) {
+  if(!loader) {
     return (
       <h1 className='text-center'>JAAHAN HULEE BRO .....</h1>
     )
