@@ -30,6 +30,7 @@ export const AddPost = () => {
     toast.error("Log in to add post!"); // Show error notification
     console.error('Error creating post:', err); // Log the error for debugging
   }
+  //
 };
 
 
