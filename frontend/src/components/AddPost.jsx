@@ -46,8 +46,8 @@ export const AddPost = () => {
       <button onClick={handleSubmit}>Add Post</button> */}
       <div className='flex flex-row justify-between items-center space-x-4 w-1/2 p-4 rounded flex-2 '>
         {/* <input type="text" placeholder='Add post here' className='flex flex-1 outline-none border-none border-b-2 border-blue-400 p-2 resize-none box-border'/> */}
-        <textarea name="" id="" cols="30" rows={10} placeholder='Add post here' className='flex flex-1 rounded p-2 outline-none bg-lime-300'></textarea>
-        <button onClick={handleSubmit} value={text} onChange={(e) => setText(e.target.value)} className='outline rounded bg-gradient-to-r from-purple-400 h-full p-2 font-bold'>Add post</button>
+        <textarea name="" id="" cols="30" rows={10} placeholder='Add post here' className='flex flex-1 rounded p-2 outline-none bg-lime-300' value={text} onChange={(e) => setText(e.target.value)}></textarea>
+        <button onClick={handleSubmit} className='outline rounded bg-gradient-to-r from-purple-400 h-full p-2 font-bold'>Add post</button>
       </div>
       <Link to="/home"><button className='rounded outline p-5 bg-green-300'>BACK</button></Link>
     </div>
