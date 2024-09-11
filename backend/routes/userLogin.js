@@ -25,8 +25,8 @@ router.post('/', async (req, res) => {
     
     if (validPassword) {
         const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
-            if(err) throw err;
-            res.cookie("token", token, { httpOnly: true, maxAge: 3600000 }).json(user)
+          if(err) throw err;
+          res.cookie("token", token, { httpOnly: true, maxAge: 3600000 }).json(user)
         });
     }
     // Generate a token if the password is valid

@@ -10,8 +10,8 @@ export const Login = () => {
   const { setUser } = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-   const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,10 +19,12 @@ export const Login = () => {
       toast.error('Username and password are required!');
       return;
     } 
+    setLoader(false);
 
     const data = { username, password };
 
     try {
+      // https://hello-1-4kds.onrender.com/
       const response = await axios.post("https://hello-1-4kds.onrender.com/", data);
       toast.success(response.data.message); // Assuming response data has a message
       setUser(response.data); 
@@ -32,8 +34,17 @@ export const Login = () => {
       const errorMessage = error.response?.data?.message || 'An error occurred';
       toast.error(errorMessage);
       console.log(error);
+      setLoader(false)
+    }
+    finally {
+      setLoader(false)
     }
   };
+  if(loader) {
+    return (
+      <h1 className='text-center'>JAAHAN HULEE BRO .....</h1>
+    )
+  }
  
 
   return (

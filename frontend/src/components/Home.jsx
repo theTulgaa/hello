@@ -15,11 +15,12 @@ export const Home = () => {
   const { user } = useContext(UserContext);
   const {setPosts} = useContext(UserContext);
   const {posts} = useContext(UserContext);
-  const [isLiked, setIsLiked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const fetchPosts = async () => {
     try {
+      // https://hello-1-4kds.onrender.com/addpost
       const response = await axios.get('https://hello-1-4kds.onrender.com/addpost'); // API call to get posts
       setPosts(response.data); // Set posts in state
       setLoading(false); 
@@ -39,23 +40,25 @@ export const Home = () => {
    
    const handleLikeToggle = async (postId) => {
     try {
+      //https://hello-1-4kds.onrender.com/addpost/${postId}
       const response = await axios.post(`https://hello-1-4kds.onrender.com/addpost/${postId}`, { username: user.username });
       // setPosts(response.data)
       setPosts(prevPosts => prevPosts.map(post => post._id === postId ? response.data.updatedPost : post));
     } catch (error) {
-      toast.error('Error toggling like status.');
+      toast.error('log in to like or something went wrong!');
     }
   };
 
   if ( loading) {
-    return <h1>LOADING ..... </h1>
+    return <h1 className='text-center'>LOADING ..... </h1>
   }
 
   return (
     <div className='bg-gradient-to-r from-teal-400 to-blue-500 h-screen flex flex-col overflow-y-auto'>
-      <header className='flex justify-between p-5 items-center'>
+      <h1 className='text-center text-xl'><span className='text-black'>{user ? <h1>logged in as: {user.username}</h1> : <h1>Please log in again to like and add post. When you refresh page your cookie will be deleted.</h1>}</span></h1>
+      <header className='flex justify-between p-5 items-center top-0 z-50 sticky outline rounded m-2 bg-blue-600'>
         <div>
-          <h1>Drop your unpleasant thoughts and debate with others about any topic</h1>
+          <h1 className='font-bold bg-gradient-to-r from-white to-green-500 bg-clip-text text-transparent'>Өөрийн үзэл бодлоо энд илэрхийл. We support democracy.</h1>
         </div>
         <div>
           <Link to="/addpost"><button className='outline rounded px-3 mx-4 bg-gradient-to-r from-purple-400 pt-2 pb-2 '>add post</button></Link>

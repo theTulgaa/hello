@@ -23,6 +23,7 @@ export const Signup = () => {
     }
     setLoading(true);
     axios
+    // https://hello-1-4kds.onrender.com/signup
     .post("https://hello-1-4kds.onrender.com/signup", data)
     // .post("http://localhost:8000/signup", data)
     .then(() => {
