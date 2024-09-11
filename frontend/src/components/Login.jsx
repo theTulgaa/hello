@@ -10,7 +10,7 @@ export const Login = () => {
   const { setUser } = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
   const navigate = useNavigate();
   
   const handleLogin = async (e) => {
