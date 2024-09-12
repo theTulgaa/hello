@@ -19,7 +19,7 @@ export const Login = () => {
       toast.error('Username and password are required!');
       return;
     } 
-    // setLoader(false);
+    setLoader(false);
 
     const data = { username, password };
 
@@ -29,7 +29,7 @@ export const Login = () => {
       toast.success(response.data.message); // Assuming response data has a message
       setUser(response.data); 
       navigate("/home")
-      setLoader(true)
+      // setLoader(true)
       // Update user context with user data from response
     } catch (error) {
       const errorMessage = error.response?.data?.message || 'An error occurred';
@@ -37,10 +37,10 @@ export const Login = () => {
       console.log(error);
       setLoader(false)
     }
-    // finally {
-    //   setLoader(false)
-    //   //
-    // }
+    finally {
+      setLoader(false)
+      //
+    }
   };
   if(!loader) {
     return (
